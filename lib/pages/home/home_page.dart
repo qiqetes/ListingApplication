@@ -17,6 +17,10 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _controller =
       TextEditingController(text: "Tu texto aquí");
 
+  void onPress() {
+    context.read<ChatBloc>().add(ChatEventSend(message: _controller.text));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,13 +35,16 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Expanded(child: TextField(controller: _controller)),
-                  IconButton(
-                      onPressed: () => context
-                          .read<ChatBloc>()
-                          .add(ChatEventSend(message: _controller.text)),
-                      icon: const Icon(Icons.send))
+                  BlocBuilder<ChatBloc, ChatState>(
+                    builder: (_, state) {
+                      return IconButton(
+                          onPressed: state is ChatStateLoading ? null : onPress,
+                          icon: const Icon(Icons.send));
+                    },
+                  ),
                 ],
               ),
+              const SizedBox(height: 40)
             ],
           ),
         ),
@@ -55,6 +62,7 @@ class ChatUI extends StatelessWidget {
       builder: (context, state) {
         return Expanded(
           child: SingleChildScrollView(
+            reverse: true,
             child: Column(children: [
               ...state.messages
                   .map((message) => ChatMessageUI(chatMessage: message)),
