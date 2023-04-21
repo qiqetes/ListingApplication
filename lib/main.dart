@@ -4,6 +4,7 @@ import 'package:interview_gpt/pages/listings_page.dart';
 
 void main() {
   runApp(MaterialApp(
+    theme: ThemeData.dark(),
     onGenerateRoute: (settings) {
       switch (settings.name) {
         case HomePage.routeName:
