@@ -18,7 +18,7 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
     emit(ChatStateIdle(messages: [
       ...state.messages,
-      ChatMessage(content: "recivido", role: MessageRole.assistant)
+      ChatMessage(content: "recibido", role: MessageRole.assistant)
     ]));
   }
 }
