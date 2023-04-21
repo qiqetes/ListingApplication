@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:interview_gpt/bloc/chat_bloc.dart';
 import 'package:interview_gpt/bloc/chat_events.dart';
 import 'package:interview_gpt/bloc/chat_states.dart';
 import 'package:interview_gpt/models/chat_message.dart';
+import 'package:interview_gpt/pages/listings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,6 +19,23 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final TextEditingController _controller =
       TextEditingController(text: "Tu texto aquí");
+
+  late final StreamSubscription chatStreamSubscription;
+  @override
+  void initState() {
+    super.initState();
+    chatStreamSubscription = context.read<ChatBloc>().stream.listen((state) {
+      if (state is ChatStateWithListing) {
+        Navigator.pushNamed(context, ListingsPage.routeName);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    chatStreamSubscription.cancel();
+    super.dispose();
+  }
 
   void onPress() {
     context.read<ChatBloc>().add(ChatEventSend(message: _controller.text));
