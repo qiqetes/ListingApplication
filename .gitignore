@@ -42,4 +42,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-.secret.dart
+
+# Ignore android, win, mac, linux folders
+/android
+/win
+/mac
+/linux
+
+

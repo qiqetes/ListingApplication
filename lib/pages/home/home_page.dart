@@ -7,7 +7,7 @@ import 'package:interview_gpt/bloc/chat/chat_events.dart';
 import 'package:interview_gpt/bloc/chat/chat_states.dart';
 
 import 'package:interview_gpt/pages/home/chat_component.dart';
-import 'package:interview_gpt/pages/listings_page.dart';
+import 'package:interview_gpt/pages/display_listings/listings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
