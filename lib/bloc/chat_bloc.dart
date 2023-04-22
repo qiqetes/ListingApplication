@@ -24,10 +24,9 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
         return emit(ChatStateWithListing(messages: [], listings: listings));
       }
 
-      emit(ChatStateIdle(messages: [
-        ...state.messages,
-        ChatMessage(content: reply, role: MessageRole.assistant)
-      ]));
+      // Handle error replies
+      var assistantMessage = ChatMessage.fromNonListingReply(reply);
+      emit(ChatStateIdle(messages: [...state.messages, assistantMessage]));
     } catch (e) {
       emit(ChatStateIdle(messages: [
         ...state.messages,
