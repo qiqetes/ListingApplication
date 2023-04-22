@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:interview_gpt/bloc/chat_bloc.dart';
+import 'package:interview_gpt/bloc/chat/chat_bloc.dart';
 import 'package:interview_gpt/pages/home/home_page.dart';
 import 'package:interview_gpt/pages/listings_page.dart';
 

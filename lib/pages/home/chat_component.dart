@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:interview_gpt/bloc/chat_bloc.dart';
-import 'package:interview_gpt/bloc/chat_states.dart';
+import 'package:interview_gpt/bloc/chat/chat_bloc.dart';
+import 'package:interview_gpt/bloc/chat/chat_states.dart';
 import 'package:interview_gpt/models/chat_message.dart';
 
 class ChatUI extends StatelessWidget {

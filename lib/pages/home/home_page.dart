@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:interview_gpt/bloc/chat_bloc.dart';
-import 'package:interview_gpt/bloc/chat_events.dart';
-import 'package:interview_gpt/bloc/chat_states.dart';
+import 'package:interview_gpt/bloc/chat/chat_bloc.dart';
+import 'package:interview_gpt/bloc/chat/chat_events.dart';
+import 'package:interview_gpt/bloc/chat/chat_states.dart';
+
 import 'package:interview_gpt/pages/home/chat_component.dart';
 import 'package:interview_gpt/pages/listings_page.dart';
 
@@ -44,12 +45,14 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ask for any listing'),
+      ),
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
           child: Column(
             children: [
-              const Text('Busca un ranking o listado de lo que quieras'),
               const ChatUI(),
               Row(
                 mainAxisSize: MainAxisSize.max,
