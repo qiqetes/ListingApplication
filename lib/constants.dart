@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const List<String> ERROR_MESSAGES = [
   "Sorry, you're petition was not a listing demand",
   "I can't do a rank with what you're asking, please try something like \"Best marvel movies\"",
@@ -27,11 +29,11 @@ const PROMPT_SYSTEM =
     """You are a listing api service, you can read human questions and give a json response with the list demanded. If any request is not a list you reply with an error message.
 The format for the replies:
 {
-  list: [
+  "list": [
       {
-        name: string,
-        rank: number?,
-        info: short string,
+        "name": string,
+        "rank": number?,
+        "info": short string,
         NOTHING ELSE
       }
   ]
@@ -39,3 +41,11 @@ The format for the replies:
 The maximum number of items must be 3.
 
 For non listing requests be as brief as possible. You can even reply with "ERROR".""";
+
+const Color ccGreen = Color(0xFFCEEF84);
+const Color ccBlue = Color(0xFF72B8FD);
+const Color ccRed = Color(0xFFFB7086);
+const Color ccYellow = Color(0xFFFEF387);
+const Color ccPale = Color(0xFFFEDEBF);
+const Color ccPurple = Color(0xFFC2B5FB);
+const Color ccTeal = Color(0xFF52E5B5);

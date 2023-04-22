@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:interview_gpt/bloc/chat/chat_bloc.dart';
 import 'package:interview_gpt/pages/display_listings/listings_page.dart';
 import 'package:interview_gpt/pages/home/home_page.dart';
@@ -21,7 +22,13 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        textTheme: GoogleFonts.sourceSansProTextTheme(),
+        colorScheme: const ColorScheme.dark().copyWith(
+          background: Colors.black,
+        ),
+        scaffoldBackgroundColor: Colors.black,
+      ),
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case HomePage.routeName:

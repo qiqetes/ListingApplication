@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:interview_gpt/bloc/chat/chat_bloc.dart';
-import 'package:interview_gpt/bloc/chat/chat_events.dart';
 import 'package:interview_gpt/bloc/chat/chat_states.dart';
 
 import 'package:interview_gpt/pages/home/chat_component.dart';
 import 'package:interview_gpt/pages/display_listings/listings_page.dart';
+import 'package:interview_gpt/pages/home/presentation_component.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,9 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final TextEditingController _controller =
-      TextEditingController(text: "Tu texto aquí");
-
   late final StreamSubscription chatStreamSubscription;
   @override
   void initState() {
@@ -38,37 +35,14 @@ class _HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  void onPress() {
-    context.read<ChatBloc>().add(ChatEventSend(message: _controller.text));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ask for any listing'),
-      ),
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
           child: Column(
-            children: [
-              const ChatUI(),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(child: TextField(controller: _controller)),
-                  BlocBuilder<ChatBloc, ChatState>(
-                    builder: (_, state) {
-                      return IconButton(
-                          onPressed: state is ChatStateLoading ? null : onPress,
-                          icon: const Icon(Icons.send));
-                    },
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40)
-            ],
+            children: const [Presentation(), ChatUI()],
           ),
         ),
       ),
