@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:interview_gpt/.secret.dart';
+import 'package:interview_gpt/constants.dart';
 
 class GptRepository {
   static Future<String> sendMessage(String userMessage) async {
