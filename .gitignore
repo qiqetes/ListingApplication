@@ -45,8 +45,9 @@ app.*.map.json
 
 # Ignore android, win, mac, linux folders
 /android
-/win
-/mac
+/windows
+/macos
 /linux
+/web
 
 
